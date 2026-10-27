@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OSINTX</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>OSINTX</h1>
+  <span class="tag">integrated OSINT &amp; leaked-data recon</span>
+</header>
+
+<main>
+  <section class="panel">
+    <form id="scan-form">
+      <input id="target" placeholder="email · phone · username · domain" autocomplete="off" required>
+      <select id="type">
+        <option value="auto">auto-detect</option>
+        <option value="email">email</option>
+        <option value="phone">phone</option>
+        <option value="username">username</option>
+        <option value="domain">domain</option>
+      </select>
+      <button type="submit">Scan</button>
+    </form>
+    <div id="filters" class="filters"></div>
+  </section>
+
+  <section class="panel">
+    <div class="row">
+      <h2>Live findings</h2>
+      <span id="counter" class="counter">0</span>
+    </div>
+    <div id="log" class="log"></div>
+  </section>
+
+  <section class="panel">
+    <div class="row">
+      <h2>History</h2>
+      <button id="refresh" class="ghost">refresh</button>
+    </div>
+    <div id="history" class="history"></div>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
