@@ -1,13 +1,19 @@
 services:
-  osintx:
+  osintx-web:
     build: .
+    image: osintx-web:latest
+    container_name: osintx-web
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     env_file:
       - .env
-    volumes:
-      - osintx-data:/root/.osintx
+    environment:
+      OSINTX_HOST: 0.0.0.0
     restart: unless-stopped
-
-volumes:
-  osintx-data:
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

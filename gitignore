@@ -1,12 +1,8 @@
-__pycache__/
-*.py[cod]
 .venv/
+__pycache__/
+*.pyc
 .env
-*.db
-*.db-wal
-*.db-shm
+*.log
 .pytest_cache/
-.ruff_cache/
-build/
-dist/
-*.egg-info/
+osintx-*.json
+osintx-*.csv

@@ -1,22 +1,23 @@
-.PHONY: install dev test lint run docker clean
+.PHONY: install run verify test docker docker-down clean
 
 install:
-	pip install -r requirements.txt && pip install -e .
-
-dev:
-	pip install -e ".[dev]"
-
-test:
-	pytest -q
-
-lint:
-	ruff check osintx tests
+	./kali_install.sh
 
 run:
-	osintx serve --reload
+	./run_web.sh
+
+verify:
+	./verify.sh
+
+test:
+	.venv/bin/python -m pytest -q tests/
 
 docker:
-	docker compose up --build
+	docker compose up -d --build
+
+docker-down:
+	docker compose down
 
 clean:
-	rm -rf build dist *.egg-info .pytest_cache .ruff_cache
+	rm -rf .venv __pycache__ osintx/web/__pycache__ .pytest_cache
+	find . -name '*.pyc' -delete
